@@ -1,4 +1,4 @@
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://inboxiq-production-6007.up.railway.app";
 
 async function analyseEmail(emailBody) {
   const [summariseRes, triageRes, labelRes] = await Promise.all([

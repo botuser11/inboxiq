@@ -162,7 +162,7 @@ function createPanel(emailBody) {
         const payload = { email_body: emailBody };
         if (threadContext) payload.thread_context = threadContext;
 
-        const result = await callAPI('http://127.0.0.1:8000/analyse', payload);
+        const result = await callAPI('https://inboxiq-production-6007.up.railway.app/analyse', payload);
 
         showResults(emailBody, result, messageCount);
 
@@ -319,7 +319,7 @@ function showResults(emailBody, result, messageCount = 1) {
     document.getElementById('inboxiq-draft-btn').textContent = 'Drafting...';
     document.getElementById('inboxiq-draft-btn').disabled = true;
     try {
-      const data = await callAPI('http://127.0.0.1:8000/draft', { email_body: emailBody, tone });
+      const data = await callAPI('https://inboxiq-production-6007.up.railway.app/draft', { email_body: emailBody, tone });
       document.getElementById('inboxiq-draft-text').value = data.draft;
       document.getElementById('inboxiq-draft-output').style.display = 'block';
     } catch (err) {
