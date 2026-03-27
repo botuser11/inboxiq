@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "InboxIQ",
+  "version": "1.0.0",
+  "description": "AI-powered Gmail assistant",
+  "permissions": [
+    "identity",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://mail.google.com/*",
+    "https://www.googleapis.com/*",
+    "http://127.0.0.1:8000/*"
+  ],
+  "background": {
+    "service_worker": "src/background/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*"],
+      "js": ["src/content/content.js"],
+      "css": ["src/content/content.css"]
+    }
+  ],
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "InboxIQ"
+  },
+  "oauth2": {
+    "client_id": "975326925625-q2n05abs7i16qhg13jvdl4kn8e95vvql.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/gmail.readonly",
+      "https://www.googleapis.com/auth/gmail.modify"
+    ]
+  }
+}
